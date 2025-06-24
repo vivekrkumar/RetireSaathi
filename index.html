@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retire Saathi - Pitch Deck</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Light gray background */
+        }
+        .slide-content {
+            display: none; /* Hide all slides by default */
+        }
+        .slide-content.active {
+            /* This class is now primarily for visual highlighting of active nav item,
+               display is handled directly by JS for robustness. */
+            display: block; /* Ensures visibility when active is applied by JS */
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e0e0e0;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <!-- Main Container -->
+    <div class="flex flex-1">
+        <!-- Sidebar Navigation -->
+        <aside class="w-64 bg-white p-6 shadow-lg rounded-r-lg flex flex-col justify-start items-start gap-3 sticky top-0 h-screen overflow-y-auto">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-500 pb-2 w-full">Retire Saathi</h2>
+            <nav class="space-y-2 w-full">
+                <a href="#title" class="nav-item flex items-center p-3 rounded-lg text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition-colors duration-200" onclick="showSlide(event, 'title')">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m0 0l7 7m-2 2v-10a1 1 0 00-1-1h-3m-6 9v-4m0 0h-4m4 0h4m-4 0v4m0 0h-4m4 0h4"></path></svg>
+                    Title
+                </a>
+                <a href="#problem" class="nav-item flex items-center p-3 rounded-lg text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition-colors duration-200" onclick="showSlide(event, 'problem')">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    The Problem
+                </a>
+                <a href="#solution" class="nav-item flex items-center p-3 rounded-lg text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition-colors duration-200" onclick="showSlide(event, 'solution')">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    The Solution
+                </a>
+                <a href="#offerings" class="nav-item flex items-center p-3 rounded-lg text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition-colors duration-200" onclick="showSlide(event, 'offerings')">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    Core Offerings
+                </a>
+                <a href="#target-market" class="nav-item flex items-center p-3 rounded-lg text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition-colors duration-200" onclick="showSlide(event, 'target-market')">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h2a2 2 0 002-2V7a2 2 0 00-2-2h-2V3a1 1 0 00-1-1H8a1 1 0 00-1 1v2H5a2 2 0 00-2 2v11a2 2 0 002 2h2m0 0l-2 2m2-2l2 2m-2-2v2"></path></svg>
+                    Target Market
+                </a>
+                <a href="#market-opportunity" class="nav-item flex items-center p-3 rounded-lg text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition-colors duration-200" onclick="showSlide(event, 'market-opportunity')">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8L11 3m9 10h-6m0-4v-6m0 6l-10 10m-2-2a4 4 0 100-8 4 4 0 000 8z"></path></svg>
+                    Market Opportunity
+                </a>
+                <a href="#revenue-model" class="nav-item flex items-center p-3 rounded-lg text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition-colors duration-200" onclick="showSlide(event, 'revenue-model')">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0h.01M12 12h9.22c.28 0 .5-.22.5-.5V5.264l-.65-.376A7.003 7.003 0 0012 2a7.003 7.003 0 00-8.57 3.882L3 5.264V12.5c0 .28.22.5.5.5H12z"></path></svg>
+                    Revenue Model
+                </a>
+                <a href="#competitive-advantage" class="nav-item flex items-center p-3 rounded-lg text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition-colors duration-200" onclick="showSlide(event, 'competitive-advantage')">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
+                    Competitive Advantage
+                </a>
+                <a href="#smart-advisor" class="nav-item flex items-center p-3 rounded-lg text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition-colors duration-200" onclick="showSlide(event, 'smart-advisor')">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                    Smart Advisor (AI)
+                </a>
+                <a href="#team" class="nav-item flex items-center p-3 rounded-lg text-gray-700 hover:bg-indigo-100 hover:hover:text-indigo-700 font-medium transition-colors duration-200" onclick="showSlide(event, 'team')">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h2a2 2 0 002-2V7a2 2 0 00-2-2h-2V3a1 1 0 00-1-1H8a1 1 0 00-1 1v2H5a2 2 0 00-2 2v11a2 2 0 002 2h2m0 0l-2 2m2-2l2 2m-2-2v2"></path></svg>
+                    Our Team
+                </a>
+                <a href="#future" class="nav-item flex items-center p-3 rounded-lg text-gray-700 hover:bg-indigo-100 hover:hover:text-indigo-700 font-medium transition-colors duration-200" onclick="showSlide(event, 'future')">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.364 1.636l-.707-.707M12 20v-1m-6.364-1.636l-.707.707M18 10a8 8 0 11-16 0 8 8 0 0116 0z"></path></svg>
+                    The Future
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 p-8 overflow-y-auto">
+            <!-- Slide 1: Title Slide -->
+            <section id="title" class="slide-content bg-white p-8 rounded-xl shadow-md mb-8 min-h-[calc(100vh-64px)] flex flex-col justify-center items-center text-center">
+                <h1 class="text-5xl font-extrabold text-indigo-700 mb-6">Retire Saathi</h1>
+                <p class="text-2xl text-gray-600 italic">Your Journey to a Worry-Free Retirement Starts Here.</p>
+                <div class="mt-10">
+                    <!-- Placeholder for Logo -->
+                    <img src="https://placehold.co/150x150/e0e0e0/555555?text=Logo" alt="Retire Saathi Logo Placeholder" class="mx-auto rounded-full shadow-lg">
+                </div>
+            </section>
+
+            <!-- Slide 2: The Problem -->
+            <section id="problem" class="slide-content bg-white p-8 rounded-xl shadow-md mb-8 min-h-[calc(100vh-64px)]">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-orange-500 pb-2">The Problem - The Indian Retirement Dilemma</h2>
+                <p class="text-xl text-gray-700 leading-relaxed mb-6">
+                    India is aging rapidly, but most aren't ready for retirement.
+                </p>
+                <ul class="list-disc list-inside text-lg text-gray-600 space-y-4">
+                    <li class="p-2 bg-red-50 rounded-lg shadow-sm">
+                        <strong class="text-red-700">Low Preparedness:</strong> 75% of Indians are skeptical about initiating retirement planning, with many relying on children or basic savings.
+                    </li>
+                    <li class="p-2 bg-yellow-50 rounded-lg shadow-sm">
+                        <strong class="text-yellow-700">Complex & Fragmented:</strong> The landscape of retirement products (PF, NPS, MFs) is confusing, lacking unified, personalized guidance.
+                    </li>
+                    <li class="p-2 bg-blue-50 rounded-lg shadow-sm">
+                        <strong class="text-blue-700">Digital Divide in Solutions:</strong> While fintech adoption is high, comprehensive digital platforms solely focused on holistic retirement planning for diverse segments are scarce.
+                    </li>
+                    <li class="p-2 bg-green-50 rounded-lg shadow-sm">
+                        <strong class="text-green-700">Untapped Potential:</strong> Many formal sector and gig workers lack access to or understanding of robust, diversified retirement strategies.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Slide 3: The Solution -->
+            <section id="solution" class="slide-content bg-white p-8 rounded-xl shadow-md mb-8 min-h-[calc(100vh-64px)]">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-500 pb-2">The Solution - Retire Saathi: Holistic Retirement Planning</h2>
+                <p class="text-xl text-gray-700 leading-relaxed mb-6">
+                    A comprehensive digital platform simplifying retirement planning and wealth management for every Indian.
+                </p>
+                <div class="grid md:grid-cols-2 gap-6 text-lg text-gray-600">
+                    <div class="flex items-center bg-purple-50 p-4 rounded-lg shadow-sm">
+                        <svg class="w-8 h-8 text-purple-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2"></path></svg>
+                        <p><strong class="text-purple-700">Personalized Planning:</strong> Intuitive calculators and financial simulators to set clear retirement goals.</p>
+                    </div>
+                    <div class="flex items-center bg-teal-50 p-4 rounded-lg shadow-sm">
+                        <svg class="w-8 h-8 text-teal-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0h.01M12 12h9.22c.28 0 .5-.22.5-.5V5.264l-.65-.376A7.003 7.003 0 0012 2a7.003 7.003 0 00-8.57 3.882L3 5.264V12.5c0 .28.22.5.5.5H12z"></path></svg>
+                        <p><strong class="text-teal-700">Integrated Investments:</strong> Access to a curated suite of retirement-focused products.</p>
+                    </div>
+                    <div class="flex items-center bg-orange-50 p-4 rounded-lg shadow-sm">
+                        <svg class="w-8 h-8 text-orange-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <p><strong class="text-orange-700">Seamless PF/Pension Support:</strong> End-to-end assistance for provident fund (EPFO) and pension-related inquiries, KYC, and withdrawals.</p>
+                    </div>
+                    <div class="flex items-center bg-lime-50 p-4 rounded-lg shadow-sm">
+                        <svg class="w-8 h-8 text-lime-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5A2.5 2.5 0 005 7.5c0 .67.333 1.258.85 1.653M12 6.253C13.168 5.477 14.754 5 16.5 5A2.5 2.5 0 0119 7.5c0 .67-.333 1.258-.85-1.653m-1.336 1.336c-.714.535-1.547.95-2.433 1.196m-9.363 1.096c.714.535 1.547.95 2.433 1.196m-1.006.106C7.832 14.477 9.246 15 10.5 15A2.5 2.5 0 0013 12.5c0-.67-.333-1.258-.85-1.653m-1.336 1.336c.714.535 1.547.95 2.433 1.196m-9.363 1.096c.714.535 1.547.95 2.433 1.196"></path></svg>
+                        <p><strong class="text-lime-700">Financial Empowerment:</strong> Educational resources and expert insights to build lasting financial literacy.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 4: Our Core Offerings -->
+            <section id="offerings" class="slide-content bg-white p-8 rounded-xl shadow-md mb-8 min-h-[calc(100vh-64px)]">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-500 pb-2">Our Core Offerings</h2>
+                <p class="text-xl text-gray-700 leading-relaxed mb-6">
+                    Retire Saathi provides an all-in-one platform for your retirement needs:
+                </p>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-indigo-700 mb-3">1. Retirement Products & Investment Options:</h3>
+                        <ul class="list-disc list-inside text-lg text-gray-600 space-y-2 pl-4">
+                            <li>National Pension System (NPS), Atal Pension Yojana (APY)</li>
+                            <li>Public Provident Fund (PPF), Senior Citizens' Savings Scheme (SCSS)</li>
+                            <li>Unit-Linked Insurance Plans (ULIPs), Mutual Funds (Equity, Debt, Hybrid, ELSS)</li>
+                            <li>Fixed Deposits, Sovereign Gold Bonds, Government & Corporate Bonds</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-indigo-700 mb-3">2. Provident Fund & Pension Support:</h3>
+                        <ul class="list-disc list-inside text-lg text-gray-600 space-y-2 pl-4">
+                            <li>EPFO inquiry, KYC assistance, and guided online withdrawal processes (e.g., Form 31, Form 19, Form 10C).</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-indigo-700 mb-3">3. Advanced Planning Tools:</h3>
+                        <ul class="list-disc list-inside text-lg text-gray-600 space-y-2 pl-4">
+                            <li>Interactive Retirement Calculators to project corpus needs.</li>
+                            <li>Financial Life Simulators for scenario analysis (inflation, market changes).</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 5: Our Target Market -->
+            <section id="target-market" class="slide-content bg-white p-8 rounded-xl shadow-md mb-8 min-h-[calc(100vh-64px)]">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-500 pb-2">Our Target Market</h2>
+                <p class="text-xl text-gray-700 leading-relaxed mb-6">
+                    Focusing on the financially aspiring and underserved workforce, aged 35-58, across urban India.
+                </p>
+                <ul class="list-disc list-inside text-lg text-gray-600 space-y-4">
+                    <li class="p-2 bg-purple-50 rounded-lg shadow-sm">
+                        <strong class="text-purple-700">Age Segment:</strong> <span class="font-semibold">35-58 years</span> – The prime earning and saving demographic.
+                    </li>
+                    <li class="p-2 bg-pink-50 rounded-lg shadow-sm">
+                        <strong class="text-pink-700">Geographic Reach:</strong> <span class="font-semibold">Metro, Tier 1, Tier 2, and Tier 3 cities.</span>
+                    </li>
+                    <li class="p-2 bg-blue-50 rounded-lg shadow-sm">
+                        <strong class="text-blue-700">Employment Sectors:</strong>
+                        <ul class="list-circle list-inside ml-6 space-y-1 mt-2">
+                            <li><strong class="text-blue-600">Private Sector Employees:</strong> Large and growing, seeking structured savings.</li>
+                            <li><strong class="text-blue-600">Government Sector Employees:</strong> Looking for supplementary investments beyond standard pensions.</li>
+                            <li><strong class="text-blue-600">Gig Workers:</strong> A rapidly expanding segment often lacking formal social security, in urgent need of voluntary retirement solutions.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Slide 6: Market Opportunity & Size -->
+            <section id="market-opportunity" class="slide-content bg-white p-8 rounded-xl shadow-md mb-8 min-h-[calc(100vh-64px)]">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-500 pb-2">Market Opportunity & Size</h2>
+                <p class="text-xl text-gray-700 leading-relaxed mb-6">
+                    Tapping into India's multi-billion dollar retirement and wealth tech market.
+                </p>
+                <ul class="list-disc list-inside text-lg text-gray-600 space-y-4">
+                    <li class="p-2 bg-green-50 rounded-lg shadow-sm">
+                        <strong class="text-green-700">Massive Addressable Base:</strong> <span class="font-semibold">50-80 million individuals</span> (age 35-58, organized/gig workforce in urban/semi-urban areas).
+                        <ul class="list-circle list-inside ml-6 space-y-1 mt-2">
+                            <li>Backed by <strong class="text-green-600">over 27 crore EPFO subscribers</strong>.</li>
+                            <li>And <strong class="text-green-600">over 1 crore gig workers</strong> (projected to be 23.5 million by 2029-30).</li>
+                        </ul>
+                    </li>
+                    <li class="p-2 bg-indigo-50 rounded-lg shadow-sm">
+                        <strong class="text-indigo-700">Receptive Audience:</strong> India boasts an <span class="font-semibold">87% Fintech adoption rate</span>, with significant growth in Tier 2/3 cities.
+                    </li>
+                    <li class="p-2 bg-yellow-50 rounded-lg shadow-sm">
+                        <strong class="text-yellow-700">Serviceable Available Market (SAM):</strong> <span class="font-semibold">10-25 million engaged users.</span> These are individuals actively seeking comprehensive digital retirement solutions.
+                    </li>
+                    <li class="p-2 bg-red-50 rounded-lg shadow-sm">
+                        <strong class="text-red-700">Significant AUM Potential:</strong> Each engaged user represents an average AUM potential of <span class="font-semibold">₹5-15 Lakhs</span> as they consolidate savings and invest for retirement.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Slide 7: Revenue Model & Projections -->
+            <section id="revenue-model" class="slide-content bg-white p-8 rounded-xl shadow-md mb-8 min-h-[calc(100vh-64px)]">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-500 pb-2">Revenue Model & Projections (Illustrative)</h2>
+                <p class="text-xl text-gray-700 leading-relaxed mb-6">
+                    Diversified revenue streams ensuring sustainable growth and value for users.
+                </p>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-indigo-700 mb-3">AUM Fees (Primary):</h3>
+                        <ul class="list-disc list-inside text-lg text-gray-600 space-y-2 pl-4">
+                            <li><strong class="text-indigo-600">Blended Average: ~0.50% of AUM.</strong> (Varies by product: NPS 0.03-0.09%, Mutual Funds Direct 0.10-0.75%).</li>
+                            <li><strong class="text-indigo-600">Projected Revenue:</strong> For 5 million users with ₹7.5 Lakhs average AUM, this translates to <span class="font-bold text-green-700">₹1,875 crore (US$225 million) annually.</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-indigo-700 mb-3">Service Fees (PF/Pension Support):</h3>
+                        <ul class="list-disc list-inside text-lg text-gray-600 space-y-2 pl-4">
+                            <li>Direct charges for assistance with EPFO KYC, withdrawals, and other complex processes.</li>
+                            <li><strong class="text-indigo-600">Potential: ₹500 - ₹5,000 per service.</strong> (e.g., 250,000 users at ₹1,000/service = <span class="font-bold text-green-700">₹25 crore / US$3 million annually</span>).</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-indigo-700 mb-3">Subscription/Premium Features:</h3>
+                        <ul class="list-disc list-inside text-lg text-gray-600 space-y-2 pl-4">
+                            <li>For advanced calculators, personalized insights, and expert access.</li>
+                            <li><strong class="text-indigo-600">Potential: ₹999 - ₹4,999 annually per subscriber.</strong> (e.g., 50,000 premium users at ₹2,000/year = <span class="font-bold text-green-700">₹10 crore / US$1.2 million annually</span>).</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-indigo-700 mb-3">Referral Fees/Commissions:</h3>
+                        <ul class="list-disc list-inside text-lg text-gray-600 space-y-2 pl-4">
+                            <li>Small fees from partners for non-AUM products like certain FDs or SCSS.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 8: Our Competitive Advantage -->
+            <section id="competitive-advantage" class="slide-content bg-white p-8 rounded-xl shadow-md mb-8 min-h-[calc(100vh-64px)]">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-500 pb-2">Our Competitive Advantage</h2>
+                <p class="text-xl text-gray-700 leading-relaxed mb-6">
+                    What makes Retire Saathi the preferred choice for a secure retirement:
+                </p>
+                <div class="grid md:grid-cols-2 gap-6 text-lg text-gray-600">
+                    <div class="flex items-start bg-purple-50 p-4 rounded-lg shadow-sm">
+                        <svg class="w-8 h-8 text-purple-600 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 10-4 0v11.597a2 2 0 00.553 1.342l1.26 1.26a1 1 0 001.414 0l1.26-1.26A2 2 0 0013 15.597V4a2 2 0 10-2 0zM4.322 13.916a2 2 0 10-.73 3.013L6 19l-2.322 2.071a1 1 0 00-.062 1.583L5 23h14l.384-.33A1 1 0 0020.062 21.07L18 19l2.408-2.071a2 2 0 10-.73-3.013L15 17h-2l-1-1-1 1H9l-3-3-1.678 1.916z"></path></svg>
+                        <p><strong class="text-purple-700">Holistic Approach:</strong> Unlike single-product platforms, we offer a comprehensive suite covering PF, NPS, MFs, ULIPs, and other investments, truly simplifying planning.</p>
+                    </div>
+                    <div class="flex items-start bg-teal-50 p-4 rounded-lg shadow-sm">
+                        <svg class="w-8 h-8 text-teal-600 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.364 1.636l-.707-.707M12 20v-1m-6.364-1.636l-.707.707M18 10a8 8 0 11-16 0 8 8 0 0116 0z"></path></svg>
+                        <p><strong class="text-teal-700">User-Centric Design:</strong> Intuitive digital interface and powerful simulators empower users, even those new to complex financial planning.</p>
+                    </div>
+                    <div class="flex items-start bg-orange-50 p-4 rounded-lg shadow-sm">
+                        <svg class="w-8 h-8 text-orange-600 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h6a2 2 0 012 2v10a2 2 0 01-2 2h-6a2 2 0 00-2 2v-3m0-3h-2m5-3h.01"></path></svg>
+                        <p><strong class="text-orange-700">Problem-Solving Focus:</strong> Direct assistance for challenging PF/pension processes is a critical differentiator and a major value-add.</p>
+                    </div>
+                    <div class="flex items-start bg-lime-50 p-4 rounded-lg shadow-sm">
+                        <svg class="w-8 h-8 text-lime-600 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <p><strong class="text-lime-700">Digital Accessibility:</strong> Leveraging India's high fintech adoption to reach broad urban and semi-urban audiences, including underserved gig workers.</p>
+                    </div>
+                    <div class="flex items-start bg-blue-50 p-4 rounded-lg shadow-sm">
+                        <svg class="w-8 h-8 text-blue-600 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5A2.5 2.5 0 005 7.5c0 .67.333 1.258.85 1.653M12 6.253C13.168 5.477 14.754 5 16.5 5A2.5 2.5 0 0119 7.5c0 .67-.333-1.258-.85-1.653m-1.336 1.336c-.714.535-1.547.95-2.433 1.196m-9.363 1.096c.714.535 1.547.95 2.433 1.196m-1.006.106C7.832 14.477 9.246 15 10.5 15A2.5 2.5 0 0013 12.5c0-.67-.333-1.258-.85-1.653m-1.336 1.336c.714.535 1.547.95 2.433 1.196m-9.363 1.096c.714.535 1.547.95 2.433 1.196"></path></svg>
+                        <p><strong class="text-blue-700">Financial Education at Core:</strong> Empowering users through continuous learning, fostering long-term engagement and trust.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide for Smart Advisor (AI) -->
+            <section id="smart-advisor" class="slide-content bg-white p-8 rounded-xl shadow-md mb-8 min-h-[calc(100vh-64px)]">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-green-500 pb-2">Smart Advisor (AI)</h2>
+                <p class="text-xl text-gray-700 leading-relaxed mb-6">
+                    Ask our AI-powered Smart Advisor any questions about retirement planning, investments, or financial well-being.
+                </p>
+
+                <div class="mb-6">
+                    <label for="ai-question" class="block text-gray-700 text-lg font-medium mb-2">Your Question:</label>
+                    <textarea id="ai-question" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 resize-y min-h-[120px] text-gray-800" placeholder="e.g., 'What are the best retirement plans for gig workers in India?' or 'How does inflation affect my retirement corpus?'"></textarea>
+                </div>
+
+                <button id="ask-ai-button" class="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors duration-200">
+                    Ask Smart Advisor
+                </button>
+
+                <div id="ai-response-container" class="mt-8 p-6 bg-gray-50 rounded-lg shadow-inner border border-gray-200">
+                    <div id="ai-loading-indicator" class="hidden text-center text-indigo-600 font-medium">
+                        <svg class="animate-spin h-5 w-5 mr-3 inline-block" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Thinking...
+                    </div>
+                    <p id="ai-response" class="text-gray-800 leading-relaxed"></p>
+                    <p class="text-sm text-gray-500 italic mt-4">Disclaimer: This information is AI-generated and for educational purposes only. It is not financial advice. Please consult a certified financial advisor for personalized recommendations.</p>
+                </div>
+            </section>
+
+            <!-- Slide 9: Our Team & Expertise -->
+            <section id="team" class="slide-content bg-white p-8 rounded-xl shadow-md mb-8 min-h-[calc(100vh-64px)]">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-500 pb-2">Our Team & Expertise</h2>
+                <p class="text-xl text-gray-700 leading-relaxed mb-6">
+                    A seasoned team with deep expertise in Fintech, Wealth Management, and Digital Product Development.
+                </p>
+                <div class="grid md:grid-cols-3 gap-6 text-center">
+                    <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg shadow-sm">
+                        <img src="https://placehold.co/120x120/d1d5db/374151?text=Founder" alt="Founder Placeholder" class="rounded-full mb-4 w-32 h-32 object-cover">
+                        <h3 class="text-xl font-semibold text-gray-800">Founder Name</h3>
+                        <p class="text-sm text-gray-600 mt-1">X years in Wealth Management, ex- [Company Name], specializes in retirement product design.</p>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg shadow-sm">
+                        <img src="https://placehold.co/120x120/d1d5db/374151?text=Co-Founder" alt="Co-Founder Placeholder" class="rounded-full mb-4 w-32 h-32 object-cover">
+                        <h3 class="text-xl font-semibold text-gray-800">Co-founder Name</h3>
+                        <p class="text-sm text-gray-600 mt-1">Y years in Fintech product development, previously led engineering at [Company Name].</p>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg shadow-sm">
+                        <img src="https://placehold.co/120x120/d1d5db/374151?text=Advisor" alt="Advisor Placeholder" class="rounded-full mb-4 w-32 h-32 object-cover">
+                        <h3 class="text-xl font-semibold text-gray-800">Advisor Name</h3>
+                        <p class="text-sm text-gray-600 mt-1">Z years as a financial planning expert, deep understanding of Indian regulatory landscape.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 10: The Future is Secure with Retire Saathi -->
+            <section id="future" class="slide-content bg-white p-8 rounded-xl shadow-md mb-8 min-h-[calc(100vh-64px)] flex flex-col justify-center items-center text-center">
+                <h2 class="text-4xl font-extrabold text-indigo-700 mb-6">The Future is Secure with Retire Saathi</h2>
+                <p class="text-2xl text-gray-700 leading-relaxed mb-8">
+                    <strong class="text-indigo-600">Our Vision:</strong> To be the most trusted and indispensable partner for every Indian planning their retirement, enabling financial independence and peace of mind.
+                </p>
+                <p class="text-3xl font-semibold text-green-600 mb-10">
+                    Join us in building a financially secure India.
+                </p>
+                <div class="text-xl text-gray-700">
+                    <p class="mb-2"><strong>Get in touch:</strong></p>
+                    <p class="mb-1">[Your Contact Information/Website/Email]</p>
+                    <p>contact@retiresaathi.com | www.retiresaathi.com</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function showSlide(event, slideId) {
+            // Prevent default anchor link behavior that might cause page jump/reset
+            if (event) {
+                event.preventDefault();
+            }
+
+            // Hide all slides by directly setting their display style
+            document.querySelectorAll('.slide-content').forEach(slide => {
+                slide.style.display = 'none';
+            });
+
+            // Show the requested slide by setting its display style
+            const activeSlide = document.getElementById(slideId);
+            if (activeSlide) {
+                activeSlide.style.display = 'block';
+                // Scroll to the top of the main content area to ensure new slide is visible
+                document.querySelector('main').scrollTop = 0;
+            }
+
+            // Update active state in navigation
+            document.querySelectorAll('.nav-item').forEach(navItem => {
+                navItem.classList.remove('bg-indigo-200', 'text-indigo-800');
+                navItem.classList.add('text-gray-700', 'hover:bg-indigo-100', 'hover:text-indigo-700');
+            });
+            const currentNavItem = document.querySelector(`.nav-item[href="#${slideId}"]`);
+            if (currentNavItem) {
+                currentNavItem.classList.remove('text-gray-700', 'hover:bg-indigo-100', 'hover:text-indigo-700');
+                currentNavItem.classList.add('bg-indigo-200', 'text-indigo-800');
+            }
+        }
+
+        // Gemini API integration for Smart Advisor
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial slide on page load
+            showSlide(null, 'title');
+
+            const askAiButton = document.getElementById('ask-ai-button');
+            const aiQuestionTextarea = document.getElementById('ai-question');
+            const aiResponseDiv = document.getElementById('ai-response');
+            const aiLoadingIndicator = document.getElementById('ai-loading-indicator');
+
+            if (askAiButton && aiQuestionTextarea && aiResponseDiv && aiLoadingIndicator) {
+                askAiButton.addEventListener('click', async () => {
+                    const prompt = aiQuestionTextarea.value.trim();
+                    if (!prompt) {
+                        aiResponseDiv.innerHTML = '<p class="text-red-600">Please enter a question.</p>';
+                        return;
+                    }
+
+                    aiResponseDiv.textContent = ''; // Clear previous response
+                    aiLoadingIndicator.classList.remove('hidden'); // Show loading indicator
+                    askAiButton.disabled = true; // Disable button during request
+
+                    try {
+                        let chatHistory = [];
+                        chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                        const payload = { contents: chatHistory };
+                        const apiKey = ""; // If you want to use models other than gemini-2.0-flash, provide an API key here. Otherwise, leave this as-is.
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        const result = await response.json();
+
+                        if (result.candidates && result.candidates.length > 0 &&
+                            result.candidates[0].content && result.candidates[0].content.parts &&
+                            result.candidates[0].content.parts.length > 0) {
+                            const text = result.candidates[0].content.parts[0].text;
+                            aiResponseDiv.innerHTML = text.replace(/\n/g, '<br>'); // Display response, convert newlines to <br>
+                        } else {
+                            aiResponseDiv.innerHTML = '<p class="text-red-600">Could not get a response. Please try again.</p>';
+                            console.error('Unexpected API response structure:', result);
+                        }
+                    } catch (error) {
+                        aiResponseDiv.innerHTML = `<p class="text-red-600">Error: ${error.message}. Please try again.</p>`;
+                        console.error('Error calling Gemini API:', error);
+                    } finally {
+                        aiLoadingIndicator.classList.add('hidden'); // Hide loading indicator
+                        askAiButton.disabled = false; // Re-enable button
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
